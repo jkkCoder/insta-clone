@@ -23,6 +23,6 @@ const postSchema = new mongoose.Schema({
         type:ObjectId,
         ref:"User"
     }
-})
+},{timestamps:true})        //adds createdAt 
 
 mongoose.model("Post",postSchema)
