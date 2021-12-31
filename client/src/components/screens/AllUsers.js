@@ -17,7 +17,7 @@ const AllUsers = () => {
         }).then(res => res.json())
         .then(results => {
             //remove the current user from that data
-            console.log(results.user)
+            // console.log(results.user)
             let usersExceptMe = results.user.filter(item=> item._id!==state._id)
             setUsers(usersExceptMe)
         })
