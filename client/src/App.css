@@ -56,3 +56,16 @@ a{
 .material-icons:hover{
   cursor:pointer;
 }
+
+.small-circled{
+  width: 56px;
+  height: 53px;
+  border-radius: 50%;
+  cursor:pointer;
+}
+
+.post-header{
+  display: flex;
+  margin-left: 7px;
+  align-items: center;
+}

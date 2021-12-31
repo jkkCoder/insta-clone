@@ -6,7 +6,7 @@ const AllUsers = () => {
     const { state } = useContext(UserContext)
     const [users, setUsers] = useState([])
     useEffect(() => {
-        fetch("search-users", {
+        fetch("/search-users", {
             method: "post",
             headers: {
                 "Content-Type": "application/json"

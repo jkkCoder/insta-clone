@@ -117,18 +117,21 @@ const Home = () => {
                 data.map(item => {
                     return (
                         <div key={item._id} className="card home-card">
-                            <h5 style={{padding:"6px"}}><Link to={item.postedBy._id !== state._id?`/profile/${item.postedBy._id}` : "/profile"}>{item.postedBy.name} </Link>
-                                {
-                                    item.postedBy._id == state._id  //if this is ur account then only it will show
-                                    &&
-                                    <i className="material-icons" 
-                                    style={{float:"right"}}    
-                                    onClick={
-                                        ()=>deletePost(item._id)
-                                    }>delete</i>
-                                }
-                                 
-                            </h5>
+                            <div className="post-header">
+                                <Link to={item.postedBy._id !== state._id?`/profile/${item.postedBy._id}` : "/profile"}><img className="small-circled" src={item.postedBy.pic}/></Link>
+                                <h5 style={{padding:"6px"}}><Link to={item.postedBy._id !== state._id?`/profile/${item.postedBy._id}` : "/profile"}>{item.postedBy.name} </Link>
+                                    {
+                                        item.postedBy._id == state._id  //if this is ur account then only it will show
+                                        &&
+                                        <i className="material-icons" 
+                                        style={{position:"absolute",right:"2%"}}    
+                                        onClick={
+                                            ()=>deletePost(item._id)
+                                        }>delete</i>
+                                    }
+                                    
+                                </h5>
+                            </div>
                             <div className="card-image">
                                 <img src={item.photo} />
                             </div>
@@ -153,6 +156,7 @@ const Home = () => {
                                 <form onSubmit={(e)=>{
                                     e.preventDefault()
                                     makeComment(e.target[0].value,item._id)
+                                    e.target[0].value=""
                                 }}>
                                     <input type="text" placeholder="add a comment" />
                                 </form>
