@@ -16,6 +16,7 @@ const Navbar = () => {
         if (state) {      //if state is there that means user is present
             return [
                 <li key="7"><i data-target="modal1" className="large material-icons modal-trigger" style={{ color: "black" }}>search</i></li>,
+                <li key="8"><Link to="/all">All users</Link></li>,
                 <li key="1"><Link to="/profile">Profile</Link></li>,
                 <li key="2"><Link to="/create">Create Post</Link></li>,
                 <li key="3"><Link to="/myfollowingpost">My following Posts</Link></li>,
