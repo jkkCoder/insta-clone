@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { UserContext } from '../../App'
+import { APP_URL } from '../../constants'
 
 const Profile = () => {
     const [mypics, setPics] = useState([])
     const [image, setImage] = useState("")
     const { state, dispatch } = useContext(UserContext)
     useEffect(() => {
-        fetch("/mypost", {
+        fetch(APP_URL + "/mypost", {
             headers: {
                 authorization: "Bearer " + localStorage.getItem("jwt")
             }
@@ -29,7 +30,7 @@ const Profile = () => {
                     // console.log(data)
                     // localStorage.setItem("user",JSON.stringify({...state,pic:data.url}))
                     // dispatch({type:"UPDATEPIC",payload:data.url})
-                    fetch("/updatepic",{
+                    fetch(APP_URL + "/updatepic",{
                         method:"put",
                         headers:{
                             "Content-Type":"application/json",

@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom"
 import M from "materialize-css"
+import { APP_URL } from '../../constants'
 
 const Signup = () => {
     const navigate = useNavigate()
@@ -36,7 +37,7 @@ const Signup = () => {
         if (!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)) {
             return M.toast({ html: "invalid email", classes: "#c62828 red darken-3" })
         }
-        fetch("/signup", {
+        fetch(APP_URL + "/signup", {
             method: "post",
             headers: {
                 "Content-Type": "application/json"

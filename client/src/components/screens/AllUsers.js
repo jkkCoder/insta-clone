@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { UserContext } from "../../App"
 import {Link} from "react-router-dom"
+import { APP_URL } from '../../constants'
 
 const AllUsers = () => {
     const { state } = useContext(UserContext)
     const [users, setUsers] = useState([])
     useEffect(() => {
-        fetch("/search-users", {
+        fetch(APP_URL + "/search-users", {
             method: "post",
             headers: {
                 "Content-Type": "application/json"

@@ -2,6 +2,7 @@ import React,{useState,useContext} from 'react'
 import {Link,useNavigate} from "react-router-dom"
 import {UserContext} from "../../App"
 import M from "materialize-css"
+import { APP_URL } from '../../constants'
 
 const Signin = () => {
     const {state,dispatch} = useContext(UserContext)
@@ -14,7 +15,7 @@ const Signin = () => {
         {
             return M.toast({html:"invalid email",classes:"#c62828 red darken-3"})
         }
-        fetch("/signin", {
+        fetch(APP_URL + "/signin", {
             method:"post",
             headers:{
                 "Content-Type":"application/json"

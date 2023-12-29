@@ -1,12 +1,13 @@
 import React, { useState, useEffect,useContext } from 'react'
 import {UserContext} from "../../App"
 import {Link} from "react-router-dom"
+import { APP_URL } from '../../constants'
 
 const Home = () => {
     const [data, setData] = useState([])
     const {state,dispatch} = useContext(UserContext)
     useEffect(() => {
-        fetch("/getsubpost", {
+        fetch(APP_URL + "/getsubpost", {
             headers: {
                 authorization: "Bearer " + localStorage.getItem("jwt")
             }
@@ -17,7 +18,7 @@ const Home = () => {
     }, [])
 
     const likePost = (id)=>{
-        fetch("/like",{
+        fetch(APP_URL + "/like",{
             method:"PUT",
             headers:{
                 "Content-Type":"application/json",
@@ -44,7 +45,7 @@ const Home = () => {
     }
 
     const unlikePost = (id)=>{
-        fetch("/unlike",{
+        fetch(APP_URL + "/unlike",{
             method:"PUT",
             headers:{
                 "Content-Type":"application/json",
@@ -71,7 +72,7 @@ const Home = () => {
     }
 
     const makeComment = (text,postId)=>{
-        fetch("/comment",{
+        fetch(APP_URL + "/comment",{
             method:"put",
             headers:{
                 "Content-Type":"application/json",
@@ -97,7 +98,7 @@ const Home = () => {
     }
 
     const deletePost = (postid)=>{
-        fetch(`/deletepost/${postid}`,{
+        fetch(APP_URL + `/deletepost/${postid}`,{
             method:"delete",
             headers:{
                 authorization:"Bearer "+localStorage.getItem("jwt")

@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import {useNavigate} from "react-router-dom"
 import M from "materialize-css"
+import { APP_URL } from '../../constants'
 
 const CreatePost = () => {
     const navigate = useNavigate()
@@ -10,7 +11,7 @@ const CreatePost = () => {
     const [url,setUrl] = useState("")
     useEffect(()=>{         //this will run after url is set in postDetails function
         if(!url)    return      //this effect will also run when component is mounted... so returning when url is not updated
-        fetch("/createpost",{
+        fetch(APP_URL + "/createpost",{
             method:"post",
             headers:{
                 "Content-Type":"application/json",

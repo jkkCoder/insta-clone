@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { UserContext } from '../../App'
 import { useParams } from "react-router-dom"
+import { APP_URL } from '../../constants'
 
 const Profile = () => {
     const [userProfile, setProfile] = useState(null)
@@ -8,7 +9,7 @@ const Profile = () => {
     const { userid } = useParams()
     const [showfollow, setShowFollow] = useState(state?!state.following.includes(userid):true)
     useEffect(() => {
-        fetch(`/user/${userid}`, {
+        fetch(APP_URL + `/user/${userid}`, {
             headers: {
                 authorization: "Bearer " + localStorage.getItem("jwt")
             }
@@ -23,7 +24,7 @@ const Profile = () => {
     },state)
 
     const followUser = () => {
-        fetch("/follow", {
+        fetch(APP_URL + "/follow", {
             method: "put",
             headers: {
                 "Content-Type": "application/json",
@@ -50,7 +51,7 @@ const Profile = () => {
     }
 
     const unfollowUser = () => {
-        fetch("/unfollow", {
+        fetch(APP_URL + "/unfollow", {
             method: "put",
             headers: {
                 "Content-Type": "application/json",
